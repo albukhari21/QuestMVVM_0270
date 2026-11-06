@@ -33,3 +33,23 @@ import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.arsitekturmvvm.R
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun FormSiswa(
+    pilihanJK: List<String>,
+    onSubmitButtonClicked: (List<String>) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    var txtNama by rememberSaveable { mutableStateOf("") }
+    var txtAlamat by remember { mutableStateOf("") }
+    var txtGender by remember { mutableStateOf("") }
+
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(id = R.string.app_name), color = Color.White) },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = colorResource(id = R.color.purple_500))
+            )
+        }
