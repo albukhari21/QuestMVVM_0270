@@ -37,3 +37,27 @@ fun SiswaApp(
             startDestination = Navigasi.Formulir.name,
             modifier = Modifier.padding(isiRuang)
         ) {
+            composable(route = Navigasi.Formulir.name) {
+                FormSiswa(
+                    pilihanJK = JenisK.map { id -> stringResource(id) },
+                    onSubmitButtonClicked = {
+                        viewModel.setSiswa(it)
+                        navController.navigate(Navigasi.Detail.name)
+                    }
+                )
+            }
+            composable(route = Navigasi.Detail.name) {
+                TampilSiswa(
+                    statusUiSiswa = uiState,
+                    onBackButtonClicked = { cancelAndBackToFormulir(navController) }
+                )
+            }
+        }
+    }
+}
+
+private fun cancelAndBackToFormulir(
+    navController: NavHostController
+) {
+    navController.popBackStack(Navigasi.Formulir.name, inclusive = false)
+}
