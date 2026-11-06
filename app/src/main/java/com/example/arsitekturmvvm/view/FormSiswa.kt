@@ -118,3 +118,16 @@ fun FormSiswa(
                     txtAlamat = it
                 }
             )
+            Spacer(modifier = Modifier.height(20.dp))
+            Button(
+                modifier = Modifier
+                    .width(250.dp)
+                    .padding(top = 10.dp),
+                enabled = txtNama.isNotEmpty() && txtAlamat.isNotEmpty() && txtGender.isNotEmpty(),
+                onClick = { onSubmitButtonClicked(listOf(txtNama, txtGender, txtAlamat)) }
+            ) {
+                Text(stringResource(R.string.submit))
+            }
+        }
+    }
+}
