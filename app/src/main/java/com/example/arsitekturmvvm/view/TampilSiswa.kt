@@ -32,3 +32,17 @@ fun TampilSiswa(
     onBackButtonClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val items = listOf(
+        Pair(stringResource(R.string.nama), statusUiSiswa.nama),
+        Pair(stringResource(id = R.string.gender), statusUiSiswa.gender),
+        Pair(stringResource(R.string.alamat), statusUiSiswa.alamat)
+    )
+
+    Scaffold(
+        modifier = modifier,
+        topBar = {
+            TopAppBar(
+                title = { Text(stringResource(id = R.string.detail), color = Color.White) },
+                colors = TopAppBarDefaults.topAppBarColors(containerColor = colorResource(id = R.color.purple_500))
+            )
+        }
